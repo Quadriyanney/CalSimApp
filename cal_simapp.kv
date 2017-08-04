@@ -1,0 +1,95 @@
+#:kivy 1.9.1
+
+<Buttons@Button>:
+	size_hint_x: 1
+	on_press: app.root.on_number_button_press(self.text)
+
+
+<CalLayout>:
+	id: layout
+	spacing: 5
+	orientation: "vertical"
+	textbox: textbox
+
+	TextInput:
+		id: textbox
+		multiline: False
+		size_hint_y: 0.2
+		font_size: 20
+		input_filter: "float"
+
+	BoxLayout:
+		orientation: "vertical"
+		padding: 3
+		
+		BoxLayout:
+			Buttons:
+				id: btn7
+				text: "7"
+			Buttons:
+				id: btn8
+				text: "8"
+			Buttons:
+				id: btn9
+				text: "9"
+			Button:
+				id: btn/
+				text: "/"
+				on_press: root.on_operand_button_press(self.text)
+			Button:
+				id: btnBack
+				text: "<--"
+				on_press: textbox.do_backspace()
+		
+		BoxLayout:
+			Buttons:
+				id: btn4
+				text: "4"
+			Buttons:
+				id: btn5
+				text: "5"
+			Buttons:
+				id: btn6
+				text: "6"
+			Button:
+				id: btn*
+				text: "*"
+				on_press: root.on_operand_button_press(self.text)
+			Buttons:
+				id: btn
+				text: ""
+		
+		BoxLayout:
+			Buttons:
+				id: btn1
+				text: "1"
+			Buttons:
+				id: btn2
+				text: "2"
+			Buttons:
+				id: btn3
+				text: "3"
+			Button:
+				id: btn-
+				text: "-"
+				on_press: root.on_operand_button_press(self.text)
+			Button:
+				id: btn+
+				text: "+"
+				size_hint_y: 2
+				on_press: root.on_operand_button_press(self.text)
+		
+		BoxLayout:
+			Button:
+				id: btnClr
+				text: "C"
+				on_press: root.clear()
+			Buttons:
+				id: btn1
+				text: "0"
+			Button:
+				id: btn=
+				size_hint_x: 3
+				text: "="
+				on_press: root.display_answer(self.text)
+				
